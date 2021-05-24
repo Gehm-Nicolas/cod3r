@@ -1,0 +1,142 @@
+<div class="slider">
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarso Bessa">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+        alt="Intro Cod3r"
+        height="342" width="608">
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+        alt="Rio de Janeiro"
+        height="342" width="513">
+    </p>
+    
+    <!--
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+            alt="Avatar" height="50" align="left" width="400">
+            Mussum Ipsum, cacilds vidis litro abertis. Sapien in monti palavris qui num significa nadis i pareci latim. Cevadis im ampola pa arma uma pindureta. Quem num gosta di mim que vai caçá sua turmis! Copo furadis é disculpa de bebadis, arcu quam euismod magna.  
+    </p>
+    
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 600px)">
+                <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+        </picture>
+    </p>
+
+    <p class="cidade"></p>
+    -->
+
+</div> 
+
+
+<script>
+    let p = document.querySelectorAll("p");
+
+    //Start positions
+    let startPosition = [
+        p[0].style["right"] = ( - parseInt(p[0].children[0].width) ).toString(),
+        p[1].style["right"] = ( - parseInt(p[1].children[0].width) + parseInt(p[0].style["right"])).toString(),
+        p[2].style["right"] = ( - parseInt(p[2].children[0].width) + parseInt(p[1].style["right"])).toString(),
+        //p[3].style["right"] = ( - parseInt(p[3].children[0].width) + parseInt(p[2].style["right"])).toString(),
+        //p[4].style["right"] = ( - parseInt(p[4].children[0].width) + parseInt(p[3].style["right"])).toString(),
+        //p[5].style["right"] = ( - parseInt(p[5].children[0].width) + parseInt(p[4].style["right"])).toString()
+    ];
+    console.log(startPosition);
+    console.log(p[1]);
+    console.log(p[1].children[0]);
+    console.log(p[2].children[0].getAttributeNames());
+    console.log(p[1].children[0].clientWidth);
+
+    //Padding
+    p[0].style["padding"] = "25px 25px";
+    p[1].style["padding"] = "25px 25px";
+    p[2].style["padding"] = "25px 25px";
+    //p[3].style["padding"] = "25px 0px";
+    //p[4].style["padding"] = "25px 0px";
+    //p[5].style["padding"] = "25px 0px";
+
+    //Display
+    p[0].style["display"] = "block";
+    p[1].style["display"] = "block";
+    p[2].style["display"] = "block";
+    //p[3].style["display"] = "block";
+    //p[4].style["display"] = "block";
+    //p[5].style["display"] = "block";
+
+    console.log("scrollWidth = " + document.querySelector("body").scrollWidth);
+    console.log("offsetWidth = " + document.querySelector("body").offsetWidth);
+    console.log("clientWidth (do not include scroll bar) = " + document.querySelector("body").clientWidth);
+    console.log("window.innerWidth = " + window.innerWidth);
+
+    //For 1 image:
+    // window.setInterval( () => {
+    //     if(parseInt(p[0].style["right"]) < window.innerWidth){
+    //         p[0].style["right"] = ( parseInt(p[0].style["right"]) + 1 ).toString();
+    //         //console.log(p[0].style["right"]);
+    //         //console.log("window.innerWidth = " + window.innerWidth);
+    //     } else {
+    //         p[0].style["right"] = startPosition;
+    //     }
+    // }, 10);
+
+    //For x images:
+    window.setInterval( () => {
+        for(let i=0; i < p.length; i++){
+            if(parseInt(p[i].style["right"]) < window.innerWidth){
+                p[i].style["right"] = ( parseInt(p[i].style["right"]) + 1 ).toString();
+                //console.log(p[0].style["right"]);
+                //console.log("window.innerWidth = " + window.innerWidth);
+            } else {
+                if(i === 0){
+                    p[0].style["right"] = (parseInt(p[p.length-1].style["right"]) - parseInt(p[p.length-1].children[0].width)).toString();
+                } else {
+                    p[i].style["right"] = (parseInt(p[i-1].style["right"]) - parseInt(p[i-1].children[0].width)).toString();
+                    console.log(p[i].style["right"]);
+                }
+            }
+        }
+    }, 10);
+
+</script>
+
+<style>
+    body {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    p {
+        position: absolute;
+        display: none;
+    }
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 12px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
