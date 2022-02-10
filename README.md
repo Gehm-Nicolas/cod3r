@@ -10,7 +10,7 @@ The course includes modules of:
   <li><a href="https://github.com/Gehm-Nicolas/cod3r/tree/main/node">Node </a></li>
   <li>ESNext</li>
   <li><a href="https://github.com/Gehm-Nicolas/cod3r/tree/main/html">HTML</a></li>
-  <li>CSS</li>
+  <li><a href="https://github.com/Gehm-Nicolas/cod3r/tree/main/css">CSS</a></li>
   <li>Ajax</li>
   <li>Gulp</li>
   <li>Webpack</li>
