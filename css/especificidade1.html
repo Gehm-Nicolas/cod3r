@@ -6,7 +6,36 @@
     <title>Especificidade CSS</title>
     <style>
         /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
-    </style>
+   
+        /*
+            Quanto mais específico, maior a prioridade do estilo aplicado
+
+            1. regra com !important
+            2. seletores mais específicos 
+            3. quando há impate, o último processado
+               tem prioridade em relação ao que foi processado 
+               anteriormente (Ex.:mesmos seletores)
+        */
+
+        /*Seletor de Elemento com classe específica */
+        p.observacao {
+            padding: 2px;
+            background: linear-gradient(to right, red, yellow);
+        }
+
+        /*Seletor de classe*/
+        .observacao {
+            background-color: #5F5!important;
+            border: dashed 5px;
+            padding: 200px!important;
+            font-size: 40px;
+        }        
+        /*Seletor de Elemento*/
+        p {
+            background-color: #aaa;
+        }
+
+   </style>
 </head>
 
 <body>
